@@ -10,17 +10,40 @@ import React, { useState } from "react";
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm() {
+function TodoForm({initialFormData, handleSave}) {
+  const [formData,setFormData] = useState({
+    title: "",
+    description: "",
+    priority: ""
+  });
+  
+  /** Update form input. */ //TODO: 
+  function handleChange(evt) {
+    const {name, value} = evt.target;
+        setFormData(fData => ({
+            ...fData,
+            [name] : value
+    }));
+  }
 
-  /** Update form input. */
-  function handleChange(evt) { }
+  /** Call parent function and clear form. */ //TODO: 
+  function handleSubmit(evt) { 
+    evt.preventDefault();
+    console.log(formData, "<<<<<<<<<<<")
+    handleSave(formData);
+    setFormData({
+    title: "",
+    description: "",
+    priority: ""
+      }
+    );
+  }
 
-  /** Call parent function and clear form. */
-  function handleSubmit(evt) { }
+  //console.log(formData, "<<<<<<<<<look inside formData state");
 
+  
   return (
       <form className="NewTodoForm" onSubmit={handleSubmit}>
-
         <div className="mb-3">
           <input
               id="newTodo-title"
@@ -28,7 +51,7 @@ function TodoForm() {
               className="form-control"
               placeholder="Title"
               onChange={handleChange}
-              value="FIXME"
+              value={formData.title}
               aria-label="Title"
           />
         </div>
@@ -40,7 +63,7 @@ function TodoForm() {
               className="form-control"
               placeholder="Description"
               onChange={handleChange}
-              value="FIXME"
+              value={formData.description}
               aria-label="Description"
           />
         </div>
@@ -52,7 +75,7 @@ function TodoForm() {
             </label>
             <select id="newTodo-priority"
                     name="priority"
-                    value="FIXME"
+                    value={formData.priority}
                     onChange={handleChange}
                     className="form-control form-control-sm d-inline-flex"
             >
