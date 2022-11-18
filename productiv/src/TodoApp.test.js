@@ -1,0 +1,31 @@
+// import React from "react";
+// import { render, fireEvent, screen } from "@testing-library/react";
+// import EditableTodo from "./EditableTodo";
+// import Todo from "./Todo";
+// import {TODO_1, TODO_2, TODO_3, TODO_4, TODO_5} from './testData';
+// import TodoApp from "./TodoApp";
+
+// it("successfully updates todo item", function() {
+//   const {container, debug, getByPlaceholderText} = render(<EditableTodo
+//     todo={TODO_1}
+//     update={TodoApp.update}/>)
+
+//   //click on edit button
+//   const editBtn = container.querySelector(".EditableTodo-toggle");
+//   fireEvent.click(editBtn);
+
+//   //update form values
+//   // const titleInput = container.querySelector("#newTodo-title");
+//   const titleInput = screen.getByPlaceholderText("Title");
+//   debug(titleInput);
+//   fireEvent.change(titleInput, {  value: "updated-test1" })
+//   debug(container, "<<<<<<<<<<< Previously On")
+
+//   //clicking submit button
+//   const goBtn = container.querySelector(".NewTodoForm-addBtn");
+//   fireEvent.click(goBtn);
+//   debug(container, "<<<<<<<<<<< After On")
+
+//   expect(container).toContainHTML("updated-test1");
+//   expect(TodoApp.update).toHaveBeenCalled();
+// });
