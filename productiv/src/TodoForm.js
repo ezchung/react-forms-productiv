@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+const initialFormInfo = {
+  title: "",
+  description: "",
+  priority: 2
+}
 
 /** Form for adding.
  *
@@ -10,11 +15,12 @@ import React, { useState } from "react";
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({initialFormData, handleSave}) {
-  // console.log(initialFormData, "<<<<<------------")
+function TodoForm({initialFormData = initialFormInfo, handleSave}) {
+
+
   const [formData,setFormData] = useState(initialFormData);
-  
-  /** Update form input. */ 
+
+  /** Update form input. */
   function handleChange(evt) {
     const {name, value} = evt.target;
         setFormData(fData => ({
@@ -23,8 +29,8 @@ function TodoForm({initialFormData, handleSave}) {
     }));
   }
 
-  /** Call parent function and clear form. */ 
-  function handleSubmit(evt) { 
+  /** Call parent function and clear form. */
+  function handleSubmit(evt) {
     evt.preventDefault();
     handleSave(formData);
     setFormData(initialFormData);
@@ -32,7 +38,7 @@ function TodoForm({initialFormData, handleSave}) {
 
   //console.log(initialFormData, handleSave, "<<<<<<<<<TodoForm");
 
-  
+
   return (
       <form className="NewTodoForm" onSubmit={handleSubmit}>
         <div className="mb-3">

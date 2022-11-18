@@ -20,33 +20,26 @@ import TodoForm from "./TodoForm";
 function TodoApp({initialTodos}) {
   const [todos, setTodos] = useState(initialTodos);
 
-  const initialFormInfo = {
-    title: "",
-    description: "",
-    priority: 2
-  } //TODO: Can move this todo app. Assign to default
 
-  console.log("TODOAPP todos ----->", todos)
-
-  /** add a new todo to list */ 
+  /** add a new todo to list */
   function create(newTodoInfo) {
     //Takes in information
     let id = uuid();
-    let newTodo = {...newTodoInfo, id: id}; //TODO: id: id ==> , id
-    setTodos(todo => [...todo, newTodo]);   //Give todo name todos. Not singular
+    let newTodo = {...newTodoInfo, id};
+    setTodos(todos => [...todos, newTodo]);
   }
 
-  /** update a todo with updatedTodoInfo */ 
+  /** update a todo with updatedTodoInfo */
   function update(updatedTodoInfo) {
     let updateTodo = {...updatedTodoInfo};
-    let updatingTodos = todos.filter(todo => todo.id !== updateTodo.id); 
-    setTodos(todo => [...updatingTodos, updateTodo]); //Rename old state to plural
+    let updatingTodos = todos.filter(todo => todo.id !== updateTodo.id);
+    setTodos(todos => [...updatingTodos, updateTodo]);
   }
 
-  /** delete a todo by id */ 
+  /** delete a todo by id */
   function remove(id) {
-    let filterTodos = todos.filter(todo => todo.id !== id); 
-    setTodos(todo => [...filterTodos]); //Rename old state to plural
+    let filterTodos = todos.filter(todo => todo.id !== id);
+    setTodos(todos => [...filterTodos]);
   }
 
 
@@ -73,7 +66,7 @@ function TodoApp({initialTodos}) {
 
             <section>
               <h3 className="mb-3">Add Nü</h3>
-              <TodoForm initialFormData={initialFormInfo} handleSave={create}/>
+              <TodoForm handleSave={create}/>
             </section>
           </div>
 

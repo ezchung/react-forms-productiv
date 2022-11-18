@@ -16,15 +16,14 @@ function EditableTodo({todo, update, remove}) {
   const [edit, setEdit] = useState(false);
 
   /** Toggle if this is being edited
-   * Returns bool if being edited*/ //TODO: not returning anything
-  function toggleEdit() {  //TODO: make sure edit to state get accounted for
-    // if(edit) setEdit(false);   // () => __________ 
-    // else setEdit(true);
+   * Sets state to opposite of previous state
+   * Returns nothing. */
+  function toggleEdit() {
     setEdit(e => !e); //flip it to do the opposite. can delete the top two.
   }
 
   /** Call remove fn passed to this. */
-  function handleDelete() { 
+  function handleDelete() {
     remove(todo.id);
   }
 
