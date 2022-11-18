@@ -9,7 +9,7 @@ import TodoApp from "./TodoApp";
 
 
 TodoApp.update = jest.fn();
-TodoApp.delete = jest.fn();
+TodoApp.remove = jest.fn();
 
 
 /*********** Render and Smoke Tests ****************/
@@ -24,33 +24,6 @@ it("matches snapshot", function() {
 });
 
 /************ TEST UPDATE **********************/
-
-// it("successfully updates todo item", function() {
-//   const {container, debug, getByPlaceholderText} = render(<EditableTodo
-//     todo={TODO_1}
-//     update={TodoApp.update}/>)
-
-//   //click on edit button
-//   const editBtn = container.querySelector(".EditableTodo-toggle");
-//   fireEvent.click(editBtn);
-
-//   //update form values
-//   // const titleInput = container.querySelector("#newTodo-title");
-//   const titleInput = screen.getByPlaceholderText("Title");
-//   debug(titleInput);
-//   fireEvent.change(titleInput, {  value: "updated-test1" })
-//   debug(container, "<<<<<<<<<<< Previously On")
-
-//   //clicking submit button
-//   const goBtn = container.querySelector(".NewTodoForm-addBtn");
-//   fireEvent.click(goBtn);
-//   debug(container, "<<<<<<<<<<< After On")
-
-//   expect(TodoApp.update).toHaveBeenCalled();
-// });
-//mocking. cant test outside of scope. (jest.fn)
-//testing if the update prop was called 
-//toHaveBeenCalled()  creating a blank function. Testing if called
 
 it("successfully shows form", function() {
   const {container, debug } = render(<EditableTodo
