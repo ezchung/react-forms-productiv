@@ -20,36 +20,36 @@ import Todo from "./Todo";
 function TodoApp({initialTodos}) {
   const [todos, setTodos] = useState(initialTodos);
 
-  /** add a new todo to list */ //TODO: 
+  console.log("TODOAPP todos ----->", todos)
+
+  /** add a new todo to list */ //TODO:
   function create(newTodoInfo) {
     //Takes in information
     let newTodo = {...newTodoInfo, id: uuid()};
     setTodos(todo => [...todo, newTodo]);
   }
 
-  // <Todo 
-  //             title={title} 
-  //             description={description} 
-  //             priority={priority} 
-  //             id = {uuid()}
-  //           />
-
-  /** update a todo with updatedTodo */ //TODO: 
+  /** update a todo with updatedTodo */ //TODO:
   function update(updatedTodo) {
   }
 
-  /** delete a todo by id */ //TODO: 
+  /** delete a todo by id */ //TODO:
   function remove(id) {
   }
-
 
   return (
       <main className="TodoApp">
         <div className="row">
 
+
           <div className="col-md-6">
-            <EditableTodoList /> OR
-            <span className="text-muted">You have no todos.</span>
+            {todos.length < 1
+              ? <span className="text-muted">You have no todos.</span>
+              : <><p>This is our list that should be displayed</p>
+              <EditableTodoList
+                  todos={todos}
+                  update={update}
+                  remove={remove}/>  </>}
           </div>
 
           <div className="col-md-6">

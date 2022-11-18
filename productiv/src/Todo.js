@@ -9,6 +9,9 @@ import React from "react";
  **/
 
 function Todo({id, title, description, priority}) {
+  console.log("title--->", title)
+  console.log("desc--->", description)
+  console.log("priority--->", priority)
   return (
       <div className="Todo">
         <div><b>{title}</b> <small>(priority: {priority})</small></div>
@@ -16,6 +19,6 @@ function Todo({id, title, description, priority}) {
       </div>
   );
 }
-//TODO: 
+//TODO:
 
 export default Todo;
