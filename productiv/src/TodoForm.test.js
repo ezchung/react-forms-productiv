@@ -30,12 +30,12 @@ it("matches snapshot", function() {
 /*********** TEST STATE: formData ****************/
 
 it("displays for with initial data", function () {
-    const { container, debug } = render(<TodoForm initialFormData={initialFormInfo}/>);
+    const { container} = render(<TodoForm initialFormData={initialFormInfo}/>);
     
     const priorityDropDown = container.querySelector("#newTodo-priority");
     // fireEvent.click(priorityDropDown.querySelector(''));
     fireEvent.change(priorityDropDown, {target: {value : 1}});
-    debug(container)
+
     expect(container).toContainHTML("description-test");
 
     expect(priorityDropDown).toBeInTheDocument();
