@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
-import Todo from "./Todo";
+
 
 /** App for managing a todo list.
  *
@@ -20,22 +20,35 @@ import Todo from "./Todo";
 function TodoApp({initialTodos}) {
   const [todos, setTodos] = useState(initialTodos);
 
+  const initialFormInfo = {
+    title: "",
+    description: "",
+    priority: 2
+  } //TODO: Can move this todo app. Assign to default
+
   console.log("TODOAPP todos ----->", todos)
 
-  /** add a new todo to list */ //TODO:
+  /** add a new todo to list */ 
   function create(newTodoInfo) {
     //Takes in information
-    let newTodo = {...newTodoInfo, id: uuid()};
-    setTodos(todo => [...todo, newTodo]);
+    let id = uuid();
+    let newTodo = {...newTodoInfo, id: id}; //TODO: id: id ==> , id
+    setTodos(todo => [...todo, newTodo]);   //Give todo name todos. Not singular
   }
 
-  /** update a todo with updatedTodo */ //TODO:
-  function update(updatedTodo) {
+  /** update a todo with updatedTodoInfo */ 
+  function update(updatedTodoInfo) {
+    let updateTodo = {...updatedTodoInfo};
+    let updatingTodos = todos.filter(todo => todo.id !== updateTodo.id); 
+    setTodos(todo => [...updatingTodos, updateTodo]); //Rename old state to plural
   }
 
-  /** delete a todo by id */ //TODO:
+  /** delete a todo by id */ 
   function remove(id) {
+    let filterTodos = todos.filter(todo => todo.id !== id); 
+    setTodos(todo => [...filterTodos]); //Rename old state to plural
   }
+
 
   return (
       <main className="TodoApp">
@@ -45,7 +58,7 @@ function TodoApp({initialTodos}) {
           <div className="col-md-6">
             {todos.length < 1
               ? <span className="text-muted">You have no todos.</span>
-              : <><p>This is our list that should be displayed</p>
+              : <><h1>Todos</h1>
               <EditableTodoList
                   todos={todos}
                   update={update}
@@ -53,15 +66,14 @@ function TodoApp({initialTodos}) {
           </div>
 
           <div className="col-md-6">
-            (if no top todo, omit this whole section)
             <section className="mb-4">
               <h3>Top Todo</h3>
-              <TopTodo />
+              <TopTodo todos={todos}/>
             </section>
 
             <section>
               <h3 className="mb-3">Add Nü</h3>
-              <TodoForm handleSave={create}/>
+              <TodoForm initialFormData={initialFormInfo} handleSave={create}/>
             </section>
           </div>
 

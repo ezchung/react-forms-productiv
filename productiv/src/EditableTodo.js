@@ -16,22 +16,24 @@ function EditableTodo({todo, update, remove}) {
   const [edit, setEdit] = useState(false);
 
   /** Toggle if this is being edited
-   * Returns bool if being edited*/
-  function toggleEdit() {
-    setEdit(true);
+   * Returns bool if being edited*/ //TODO: not returning anything
+  function toggleEdit() {  //TODO: make sure edit to state get accounted for
+    // if(edit) setEdit(false);   // () => __________ 
+    // else setEdit(true);
+    setEdit(e => !e); //flip it to do the opposite. can delete the top two.
   }
 
   /** Call remove fn passed to this. */
-  function handleDelete() { }
+  function handleDelete() { 
+    remove(todo.id);
+  }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-
+    toggleEdit();
+    update(formData);
   }
 
-  console.log("edit---->", edit)
-  console.log("todo---->", todo)
-  //if toggleEdit?
   return (
     <div className="EditableToDo">
       {edit
@@ -53,11 +55,13 @@ function EditableTodo({todo, update, remove}) {
             </div>
                   <div>
                   <Todo
+                    key={todo.id}
                     title={todo.title}
                     description={todo.description}
                     priority={todo.priority} />
                 </div>
-          </div>)}
+          </div>)
+      }
     </div>
   );
 }

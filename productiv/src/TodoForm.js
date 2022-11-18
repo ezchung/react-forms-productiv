@@ -11,13 +11,10 @@ import React, { useState } from "react";
  */
 
 function TodoForm({initialFormData, handleSave}) {
-  const [formData,setFormData] = useState({
-    title: "",
-    description: "",
-    priority: ""
-  });
+  // console.log(initialFormData, "<<<<<------------")
+  const [formData,setFormData] = useState(initialFormData);
   
-  /** Update form input. */ //TODO: 
+  /** Update form input. */ 
   function handleChange(evt) {
     const {name, value} = evt.target;
         setFormData(fData => ({
@@ -26,20 +23,14 @@ function TodoForm({initialFormData, handleSave}) {
     }));
   }
 
-  /** Call parent function and clear form. */ //TODO: 
+  /** Call parent function and clear form. */ 
   function handleSubmit(evt) { 
     evt.preventDefault();
-    console.log(formData, "<<<<<<<<<<<")
     handleSave(formData);
-    setFormData({
-    title: "",
-    description: "",
-    priority: ""
-      }
-    );
+    setFormData(initialFormData);
   }
 
-  //console.log(formData, "<<<<<<<<<look inside formData state");
+  //console.log(initialFormData, handleSave, "<<<<<<<<<TodoForm");
 
   
   return (

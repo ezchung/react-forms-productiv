@@ -10,7 +10,7 @@ import "./App.css";
  **/
 
 function App() {
-  console.log("WE GOT TO APP.JS -----")
+
   return (
       <main className="App">
         <header className="container-fluid pt-4 pb-1">
