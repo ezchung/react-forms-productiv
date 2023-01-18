@@ -25,6 +25,7 @@ function TodoApp({initialTodos}) {
   function create(newTodoInfo) {
     //Takes in information
     let id = uuid();
+    console.log(newTodoInfo, "<<<<<<<<<<<< in create")
     let newTodo = {...newTodoInfo, id};
     setTodos(todos => [...todos, newTodo]);
   }

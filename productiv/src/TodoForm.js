@@ -19,10 +19,13 @@ function TodoForm({initialFormData = initialFormInfo, handleSave}) {
 
 
   const [formData,setFormData] = useState(initialFormData);
-
+  
+  console.log(formData, "<<<<<<<formData")
   /** Update form input. */
   function handleChange(evt) {
     const {name, value} = evt.target;
+    console.log(evt.target, "<<<<<<<")
+    console.log(name, "<<<<name")
         setFormData(fData => ({
             ...fData,
             [name] : value
@@ -36,7 +39,7 @@ function TodoForm({initialFormData = initialFormInfo, handleSave}) {
     setFormData(initialFormData);
   }
 
-  //console.log(initialFormData, handleSave, "<<<<<<<<<TodoForm");
+  console.log(formData, "<<<<<<<<<TodoForm");
 
 
   return (
